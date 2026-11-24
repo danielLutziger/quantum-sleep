@@ -53,6 +53,8 @@ Features are scaled to [0, π] with a MinMaxScaler fit on the training set only.
 
 Training directly on hardware was not attempted: gradients there require the parameter-shift rule, i.e. thousands of noisy circuit runs per step.
 
+![Circuit](src/quantum_sleep/figures/circuit.png)
+
 ## Results
 
 **Full test set (419 epochs, held-out subject)**
@@ -61,8 +63,13 @@ Training directly on hardware was not attempted: gradients there require the par
 |---|---|---|
 | Logistic regression | delta only | 0.850 |
 | Logistic regression | 4 bands | 0.843 |
-| VQC, ideal simulator, 5 seeds | 4 bands | 0.800 |
-| VQC, FakeManilaV2, 5 seeds | 4 bands | 0.700 |
+| VQC, ideal simulator, 5 seeds | 4 bands | 0.796 ± 0.080 |
+| VQC, FakeManilaV2, 5 seeds | 4 bands | 0.791 ± 0.008 |
+
+Runs for ideal simulator (0.856, 0.882, 0.702, 0.842, 0.697)
+Results for FakeManila (0.862, 0.877, 0.655, 0.850, 0.710)
+
+![Results by seed](src/quantum_sleep/figures/results_by_seed.png)
 
 **Same trained model (seed 42) on a fixed, class-balanced subset of 40 test epochs (20 N2, 20 N3)**
 
@@ -71,6 +78,8 @@ Training directly on hardware was not attempted: gradients there require the par
 | Ideal simulator | 0.800 |
 | FakeManilaV2 (noise model) | 0.700 |
 | ibm_kingston (real hardware) | 0.725 |
+
+![Hardware](src/quantum_sleep/figures/hardware.png)
 
 ## Findings
 
